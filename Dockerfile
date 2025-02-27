@@ -31,6 +31,8 @@ RUN rm ./Miniconda3-latest-Linux-x86_64.sh
 
 RUN sudo apt-get -qq install libglib2.0-0 libsndfile1 libsm6 libxext6 libxrender-dev libgl1
 
+RUN echo "source activate video_features" >> ~/.bashrc
+
 SHELL ["conda", "run", "-n", "video_features", "/bin/bash", "-c"]
 
 ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "video_features"]

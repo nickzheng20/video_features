@@ -13,6 +13,8 @@ def main(args_cli):
 
     # verbosing with the print -- haha (TODO: logging)
     print(OmegaConf.to_yaml(args))
+    print(args.output_path)
+    print(args.on_extraction)
     if args.on_extraction in ['save_numpy', 'save_pickle']:
         print(f'Saving features to {args.output_path}')
     print('Device:', args.device)

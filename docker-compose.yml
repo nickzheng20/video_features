@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  video_features:
+    image: video_features_2:latest
+    
+    tty: true
+    stdin_open: true
+
+    command: bash
+
+    volumes:
+      - /home/nick12138/projects/energy_expenditure/video_features:/home/ubuntu/video_features
+      - /home/nick12138/data/energy_expenditure/video_test:/home/ubuntu/video_features/dataset
+      - /home/nick12138/data/energy_expenditure/outputs/i3d/video_test:/home/ubuntu/video_features/output/
+
+    shm_size: 8G
+
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=0
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
