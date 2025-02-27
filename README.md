@@ -1,4 +1,28 @@
 
+
+
+# Video Features for Energy Expenditure Project Docker Update
+
+* Change the second and third rows of **volumes** in *docker-compose.yml* to the input and output directory of your data. 
+* Run the following commands in sequence to set up your environment. You might have to add a **sudo** in front of each docker command due to different settings. 
+```bash
+docker build --tag video_features .
+```
+```bash
+docker compose up -d
+```
+* To enter the terminal, run:
+```bash
+docker exec -it video_features-video_features-1 bash
+```
+* Inside the terminal, edit *video_pasths.txt*, then run:
+```bash
+python main.py \
+    feature_type=i3d \
+    device="cuda:0" \
+    file_with_video_paths=./dataset/video_paths.txt
+```
+
 <div align="center">
 
 # Video Features
